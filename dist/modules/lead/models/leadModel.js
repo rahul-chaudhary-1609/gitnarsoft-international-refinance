@@ -13,28 +13,9 @@ const dbConnection = new DatabaseConnection();
 const AppModel = dbConnection.Model;
 const sequelize = dbConnection.sequelize;
 class LeadModel extends AppModel {
-    getAll(_attributes = null, _where = null, _order = null, _limit = null, _offset = null, _raw = true) {
+    getAll(_query) {
         return __awaiter(this, void 0, void 0, function* () {
-            let query = {};
-            if (_attributes) {
-                query.attributes = _attributes;
-            }
-            if (_where) {
-                query.where = _where;
-            }
-            if (_order) {
-                query.order = _order;
-            }
-            if (_limit) {
-                query._limit = _limit;
-            }
-            if (_offset) {
-                query._offset = _offset;
-            }
-            if (_raw) {
-                query.raw = _raw;
-            }
-            return yield LeadModel.findAll(query);
+            return yield LeadModel.findAll(_query);
         });
     }
     addData(data) {

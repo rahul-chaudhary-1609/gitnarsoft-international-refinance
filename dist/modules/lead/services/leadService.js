@@ -14,11 +14,13 @@ class LeadService {
     ;
     getLead(params) {
         return __awaiter(this, void 0, void 0, function* () {
-            let _where = {};
+            let _query = {
+                where: {}
+            };
             if (params.lead_id) {
-                _where.id = params.lead_id;
+                _query.where.id = params.lead_id;
             }
-            let lead = yield leadModel.getAll(null, _where);
+            let lead = yield leadModel.getAll(_query);
             return lead;
         });
     }

@@ -1,6 +1,6 @@
 import swaggerUi from "swagger-ui-express";
 import leadRoutes from "../modules/lead/routes.js";
-import * as swaggerDocument from "../swagger.js";
+import swaggerDocument from "../swagger.js";
 function routes(app) {
     app.get('/', (req, res) => {
         console.log(req.query);
@@ -10,7 +10,7 @@ function routes(app) {
         console.log(req.query);
         res.send("Ok");
     });
-    app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument.doc, { swaggerOptions: { docExpansion: "none" } }));
+    app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, { swaggerOptions: { docExpansion: "none" } }));
     app.use("/lead", leadRoutes);
 }
 export default routes;

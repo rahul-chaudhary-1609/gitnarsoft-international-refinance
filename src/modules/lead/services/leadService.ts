@@ -12,11 +12,13 @@ class LeadService{
     constructor(){};
 
     public async getLead(params: any){
-        let _where:any={}
-        if(params.lead_id){
-            _where.id = params.lead_id;
+        let _query:any={
+            where:{}
         }
-        let lead = await leadModel.getAll(null,_where);
+        if(params.lead_id){
+            _query.where.id = params.lead_id;
+        }
+        let lead = await leadModel.getAll(_query);
         return lead;
     }
 

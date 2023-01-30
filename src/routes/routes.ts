@@ -4,7 +4,7 @@ import swaggerUi from "swagger-ui-express";
 
 //internal modules imports
 import leadRoutes from "../modules/lead/routes.js";
-import * as swaggerDocument from "../swagger.js";
+import swaggerDocument from "../swagger.js";
 
 function routes(app:Express):void{
     app.get('/',(req:Request,res:Response):void=>{
@@ -17,7 +17,7 @@ function routes(app:Express):void{
         res.send("Ok")
     });
 
-    app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument.doc, { swaggerOptions: { docExpansion: "none"}}));
+    app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, { swaggerOptions: { docExpansion: "none"}}));
 
     app.use("/lead",leadRoutes);
 }
